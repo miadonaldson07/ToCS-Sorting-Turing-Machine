@@ -1,3 +1,4 @@
+import os
 
 class TuringMachine:
     def __init__(self):
@@ -14,12 +15,23 @@ class TuringMachine:
         pass
 
 # -- helper macros --
+    allowedCharsForMove = "0 1 2 3 4 5 6 7 8 9 A B C D E F [ ] ,"
 
     def move_forward_n(self, steps: int):
-        pass
+        if steps > 0:
+            for _ in range(steps):
+                state = str(self.current_state_num)
+                next_state = str(self.current_state_num + 1)
+                self.__write_state(state, self.allowedCharsForMove, "→", "", next_state)
+                self.current_state_num += 1
 
     def move_backward_n(self, steps: int):
-        pass
+        if steps > 0:
+            for _ in range(steps):
+                state = str(self.current_state_num)
+                next_state = str(self.current_state_num + 1)
+                self.__write_state(state, self.allowedCharsForMove, "←", "", next_state)
+                self.current_state_num += 1
 
     def move_forward_n_remember_x(self, steps: int, remember: str):
         pass
@@ -45,6 +57,8 @@ class TuringMachine:
 # -- out to file --
 
     def output_to_file(self):
-        with open("../turing-maching-output.tsv", "w") as f:
+        output_path = os.path.join(os.path.dirname(__file__), "..", "turing-machine-output.tsv")
+        with open(output_path, "w", encoding="utf-8") as f:
             for state in self.states:
                 f.write("\t".join(state))
+                f.write("\n")
