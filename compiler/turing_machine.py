@@ -6,11 +6,6 @@ class TuringMachine:
         self.current_state_num = 0  # increment each time a state is required
         self.__write_start_state()  # start state
 
-        self.move_forward_n(6)
-        self.move_backward_n(5)
-        self.move_forward_n_remember_x(3, "x")
-        self.move_backward_n_remember_x(8, "x")
-
 # -- high level methods --
     
     def compare():
