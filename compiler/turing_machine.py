@@ -6,6 +6,11 @@ class TuringMachine:
         self.current_state_num = 0  # increment each time a state is required
         self.__write_start_state()  # start state
 
+        self.move_forward_n(6)
+        self.move_backward_n(5)
+        self.move_forward_n_remember_x(3, "x")
+        self.move_backward_n_remember_x(8, "x")
+
 # -- high level methods --
     
     def compare():
@@ -19,25 +24,35 @@ class TuringMachine:
 
     def move_forward_n(self, steps: int):
         if steps > 0:
-            for _ in range(steps):
-                state = str(self.current_state_num)
-                next_state = str(self.current_state_num + 1)
+            for n in range(steps):
+                state = f"move_forward_{n}"
+                next_state = f"move_forward_{n+1}"
                 self.__write_state(state, self.allowedCharsForMove, "→", "", next_state)
                 self.current_state_num += 1
 
     def move_backward_n(self, steps: int):
         if steps > 0:
-            for _ in range(steps):
-                state = str(self.current_state_num)
-                next_state = str(self.current_state_num + 1)
+            for n in range(steps):
+                state = f"move_backward_{n}"
+                next_state = f"move_backward_{n+1}"
                 self.__write_state(state, self.allowedCharsForMove, "←", "", next_state)
                 self.current_state_num += 1
 
     def move_forward_n_remember_x(self, steps: int, remember: str):
-        pass
+        if steps > 0:
+            for n in range(steps):
+                state = f"move_forward_{n}_remember_{remember}"
+                next_state = f"move_forward_{n+1}_remember_{remember}"
+                self.__write_state(state, self.allowedCharsForMove, "→", "", next_state)
+                self.current_state_num += 1
 
     def move_backward_n_remember_x(self, steps: int, remember: str):
-        pass
+        if steps > 0:
+            for n in range(steps):
+                state = f"move_backward_{n}_remember_{remember}"
+                next_state = f"move_backward_{n+1}_remember_{remember}"
+                self.__write_state(state, self.allowedCharsForMove, "←", "", next_state)
+                self.current_state_num += 1
 
     # the turing machine writes to the input string tape
     # TODO: workout params
