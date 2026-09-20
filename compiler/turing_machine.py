@@ -21,7 +21,7 @@ class TuringMachine:
         if steps > 0:
             for n in range(steps):
                 state = f"move_forward_{n}"
-                next_state = f"move_forward_{n+1}"
+                next_state = f"move_forward_{n-1}"
                 self.__write_state(state, self.allowedCharsForMove, "→", "", next_state)
                 self.current_state_num += 1
 
@@ -29,7 +29,7 @@ class TuringMachine:
         if steps > 0:
             for n in range(steps):
                 state = f"move_backward_{n}"
-                next_state = f"move_backward_{n+1}"
+                next_state = f"move_backward_{n-1}"
                 self.__write_state(state, self.allowedCharsForMove, "←", "", next_state)
                 self.current_state_num += 1
 
@@ -37,7 +37,7 @@ class TuringMachine:
         if steps > 0:
             for n in range(steps):
                 state = f"move_forward_{n}_remember_{remember}"
-                next_state = f"move_forward_{n+1}_remember_{remember}"
+                next_state = f"move_forward_{n-1}_remember_{remember}"
                 self.__write_state(state, self.allowedCharsForMove, "→", "", next_state)
                 self.current_state_num += 1
 
@@ -45,7 +45,7 @@ class TuringMachine:
         if steps > 0:
             for n in range(steps):
                 state = f"move_backward_{n}_remember_{remember}"
-                next_state = f"move_backward_{n+1}_remember_{remember}"
+                next_state = f"move_backward_{n-1}_remember_{remember}"
                 self.__write_state(state, self.allowedCharsForMove, "←", "", next_state)
                 self.current_state_num += 1
 
